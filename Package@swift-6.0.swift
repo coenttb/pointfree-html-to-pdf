@@ -4,15 +4,15 @@
 import PackageDescription
 
 extension String {
-    static let pointfreeHtmlToPdf: Self = "PointFreeHtmlToPdf"
+    static let pointfreeHTMLToPDF: Self = "PointFreeHTMLToPDF"
 }
 
 extension Target.Dependency {
-    static var pointfreeHtmlToPdf: Self { .target(name: .pointfreeHtmlToPdf) }
+    static var pointfreeHTMLToPDF: Self { .target(name: .pointfreeHTMLToPDF) }
 }
 
 extension Target.Dependency {
-    static var htmlToPdf: Self { .product(name: "HtmlToPdf", package: "swift-html-to-pdf") }
+    static var htmlToPDF: Self { .product(name: "HtmlToPdf", package: "swift-html-to-pdf") }
     static var pointfreeHtml: Self { .product(name: "PointFreeHTML", package: "pointfree-html") }
 }
 
@@ -25,7 +25,7 @@ let package = Package(
         .watchOS(.v10),
       ],
     products: [
-        .library(name: .pointfreeHtmlToPdf, targets: [.pointfreeHtmlToPdf]),
+        .library(name: .pointfreeHTMLToPDF, targets: [.pointfreeHTMLToPDF]),
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/pointfree-html.git", branch: "main"),
@@ -33,20 +33,20 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: .pointfreeHtmlToPdf,
+            name: .pointfreeHTMLToPDF,
             dependencies: [
-                .htmlToPdf,
+                .htmlToPDF,
                 .pointfreeHtml
             ]
         ),
         .testTarget(
-            name: .pointfreeHtmlToPdf.tests,
+            name: .pointfreeHTMLToPDF.tests,
             dependencies: [
-                .pointfreeHtmlToPdf
+                .pointfreeHTMLToPDF
             ]
         )
     ],
-    swiftLanguageModes: [.v5]
+    swiftLanguageModes: [.v6]
 )
 
 extension String {
